@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %} 应用案例-福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+
+    <div class="page" id="cases-page">
+
+    </div>
+    {% block page_content %}
+    <div class="container" style="padding-top: 20px">
+      <div class="row">
+	<div class="col-sm-9">
+	  <h2 class="page-header color-header">销售业绩</h2>
+	  {% for casehtml in pagination.items %}
+	    <div class="col-sm-4">
+	      <img src="{{ url_for('static', filename='uploads') }}/{{ casehtml.CImg }}" class="img-responsive center-block" alt="{{ casehtml.CName }}" style="height:190px; width:190px">
+	      <h4 class="text-center">{{ casehtml.CName }}</h4>
+	      <p><a href="{{ url_for('main.details', item='cases', item_id=casehtml.id) }}" class="btn btn-sm btn-default center-block" role="button">详细介绍>></a></p>
+	      <hr>
+	    </div>
+	  {% endfor %}
+          
+          <div class="col-sm-12 pagination">
+              {%  if pagination.has_prev  %}
+                <li><a href="{{ url_for('main.cases', page=pagination.prev_num) }}">&laquo;</a></li>
+              {% else %}
+                <li><a>&laquo;</a></li>
+              {% endif %}
+              
+              {% for page in pagination.iter_pages() %}
+                {% if page %}
+                    {% if page != pagination.page %}
+                        <li><a href="{{ url_for('main.cases', page=page) }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a style="background-color: darkgray;opacity: 0.7;color: black" href="{{ url_for('main.cases', page=page) }}">{{ page }}</a></li>
+                    {% endif %}
+                {% else %}
+                    <span class=ellipsis>…</span>
+                {% endif %}
+              {% endfor %}
+              
+              {%  if pagination.has_next  %}
+                <li><a href="{{ url_for('main.cases', page=pagination.next_num) }}">&raquo;</a></li>
+              {% else %}
+                <li><a>&raquo;</a></li>
+              {% endif %}
+          </div>
+	</div>
+	
+	<div class="col-md-3 hidden-xs">
+	<div class="page-header">
+	    <h3 class="page-header color-header">产品介绍</h3>
+	    <div class="list-group">
+	      <a class="list-group-item" data-target="#product1" data-toggle="collapse">
+	      套筒式多喷孔减压阀</a>
+	      	<ul id="product1" class="collapse">
+		  <li>305型套筒式多喷孔减压阀</li>
+		  <li>810型套筒式多喷孔减压阀</li>
+		  <li>811型套筒式多喷孔减压阀</li>
+		  <li>814型套筒式多喷孔减压阀</li>
+		</ul>
+	      
+	      <a class="list-group-item" data-target="#product2" data-toggle="collapse">
+	      固定锥形消能阀</a>
+		<ul id="product2" class="collapse">
+		  <li>末端放空消能阀</li>
+		  <li>管中消能锥形阀</li>
+		  <li>环喷式固定锥形阀</li>
+		</ul>
+	      <a class="list-group-item" data-target="#product3" data-toggle="collapse">
+	      蝶阀系列</a>
+		<ul id="product3" class="collapse">
+		  <li>软密封偏心法兰蝶阀</li>
+		  <li>金属密封法兰蝶阀</li>
+		  <li>高性能耐腐蚀蝶阀</li>
+		  <li>对夹式蝶阀</li>
+		  <li>法兰中心板式蝶阀</li>
+		  <li>SE蝶阀</li>
+		</ul>
+	      <a class="list-group-item btn btn-sm btn-primary " href="/products"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <strong>查看更多</strong></a>
+	    </div>
+        </div>  
+	
+	<div class="alert alert-info" style="background-color: #CCFFFF">
+	    <h3 class="page-header">联系方式</h3>
+	    <address>
+	      <a href="/contact"><strong>福建瑞铼泊流体装备有限公司</strong></a></br>
+	      <abbr title="Address">地址:</abbr> 中国 | 南安</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 仑苍高新技术园</br>
+	      <abbr title="Zip">邮编:</abbr> 362304</br>
+	      <abbr title="Phone">电话:</abbr> 0595-26657666</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0595-86101888</br>
+	      <abbr title="Fax">传真:</abbr> 0595-26657666</br>
+	    </address>
+	  </div>
+	</div>
+      </div>
+      
+    </div>
+    {% endblock %}
+{% endblock %}

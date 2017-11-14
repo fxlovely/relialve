@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    {% if newshtml %}
+        新闻修改-福建瑞铼泊流体装备有限公司
+    {% elif producthtml %}
+        产品修改-福建瑞铼泊流体装备有限公司
+    {% elif casehtml %}
+        业绩修改-福建瑞铼泊流体装备有限公司
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% if newshtml %}
+        <div class="page" id="news-page"></div>
+    {% elif producthtml %}
+        <div class="page" id="products-page"></div>
+    {% elif casehtml %}
+        <div class="page" id="cases-page"></div>
+    {% endif %}
+    
+    {% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <ul class="flashes">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </ul>
+        </div>
+    {% endfor %}
+    <div class="container" style="padding-top: 20px">
+      <div class="row">
+	<div class="col-sm-6">
+            {% if newshtml %}
+                <h2 class="page-header color-header">新闻资讯</h2>
+                <h4>标题{{newshtml.NTitle}}</h4>
+                {% if newshtml.NImg != 'NULL' %}
+                <img src="{{ url_for('static', filename='uploads') }}/{{ newshtml.NImg }}" class="img-responsive img-thumbnail">
+                {% endif %}
+                {% if newshtml.NVideo != 'NULL' %}
+                <video controls=“controls” width=600 height=450 src="{{ url_for('static', filename='uploads') }}/{{ newshtml.NVideo }}">
+		你的浏览器不支持video标签</video>
+		{% endif %}
+                <p>内容{{ newshtml.NText }}</p>
+            {% elif producthtml %}
+                <h2 class="page-header color-header">产品介绍</h2>
+                <h4>标题{{producthtml.PName}}</h4>
+                {% if producthtml.PImg != 'NULL' %}
+                <img src="{{ url_for('static', filename='uploads')}}/{{ producthtml.PImg }}" class="img-responsive img-thumbnail">
+                {% endif %}
+                <p>内容{{ producthtml.PText }}</p>
+            {% elif casehtml %}
+                <h2 class="page-header color-header">业绩介绍</h2>
+                <h4>标题{{casehtml.CName}}</h4>
+                {% if casehtml.CImg != 'NULL' %}
+                <img src="{{ url_for('static', filename='uploads')}}/{{ casehtml.CImg }}" class="img-responsive img-thumbnail">
+                {% endif %}
+                <p>内容{{ casehtml.CText }}</p>
+            {% endif %}
+	</div>
+	<div class="col-sm-5 col-sm-offset-1">
+	  <div class="page-header">
+	    <h3 class="page-header color-header">信息修改</h3>
+	    
+	    {{ wtf.quick_form(resubform) }}
+	  </div>
+	</div>
+      </div>
+    </div>
+    {% endblock %}
+{% endblock %}

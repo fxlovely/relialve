@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Reliable - Login{% endblock %}
+
+{% block content %}
+<div class="page" id="home-page"></div>
+
+{% block page_content %}
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-info">
+        <ul class="flashes">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </ul>
+    </div>
+{% endfor %}
+<div class="container" style="padding-top: 20px">
+    <div class="page-header">
+        <h1>Login</h1>
+    </div>
+    <div class="col-md-4">
+        {{ wtf.quick_form(authform) }}
+        <br>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} 福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+
+    <div class="page" id="home-page">
+
+    </div>
+    {% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <ul class="flashes">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </ul>
+        </div>
+    {% endfor %}
+    <div class="container" style="padding-top: 20px">
+        <h1>网站管理</h1>
+        {% if page == 1 %}
+            {{ wtf.quick_form(manageform) }}
+        {% elif page == 0 %}
+            <h3>留言</h3>
+            {% for messagehtml in messagehtml %}
+            <li>
+                {{ messagehtml.MName }}(时间：{{ messagehtml.MSubTime.strftime('%Y-%m-%d %H:%M') }})
+                <a href="{{ url_for('main.delete', dbname='MessageDb', items=messagehtml.id) }}">删除</a>
+            </li>
+            {% endfor %}
+            <h3>新闻</h3>
+            {% for newshtml in newshtml %}
+            <li>
+                {{ newshtml.NTitle }}(作者：{{ newshtml.user.Username }})(时间：{{ newshtml.NSubTime.strftime('%Y-%m-%d %H:%M') }})
+                <a href="{{ url_for('main.resubmit', dbname='NewsDb', items=newshtml.id) }}">修改</a>/<a href="{{ url_for('main.delete', dbname='NewsDb', items=newshtml.id) }}">删除</a>
+            </li>
+            {% endfor %}
+            <h3>产品</h3>
+            {% for producthtml in producthtml %}
+            <li>
+                {{ producthtml.PName }}(作者：{{ producthtml.user.Username }})(时间：{{ producthtml.PSubTime.strftime('%Y-%m-%d %H:%M') }})
+                <a href="{{ url_for('main.resubmit', dbname='ProductDb', items=producthtml.id) }}">修改</a>/<a href="{{ url_for('main.delete', dbname='ProductDb', items=producthtml.id) }}">删除</a>
+            </li>
+            {% endfor %}
+            <h3>业绩</h3>
+            {% for casehtml in casehtml %}
+            <li>
+                {{ casehtml.CName }}(作者：{{ casehtml.user.Username }})(时间：{{ casehtml.CSubTime.strftime('%Y-%m-%d %H:%M') }})
+                <a href="{{ url_for('main.resubmit', dbname='CaseDb', items=casehtml.id) }}">修改</a>/<a href="{{ url_for('main.delete', dbname='CaseDb', items=casehtml.id) }}">删除</a>
+            </li>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="col-sm-12 pagination">
+            <li><a href="{{ url_for('main.manage', page=1) }}">添加</a></li>
+            <li><a href="{{ url_for('main.manage', page=0) }}">修改</a></li>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}

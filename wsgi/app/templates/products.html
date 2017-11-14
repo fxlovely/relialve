@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %} 产品中心-福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+
+    <div class="page" id="products-page">
+
+    </div>
+    {% block page_content %}
+    
+    <div class="container" style="padding-top: 20px">
+      <div class="row">
+	<div class="col-sm-9">
+	  <h2 class="page-header color-header">产品中心</h2>
+	  {% for producthtml in pagination.items %}
+	    <div class="col-sm-4">
+	      <img src="{{ url_for('static', filename='uploads') }}/{{ producthtml.PImg }}" class="img-circle img-responsive center-block" alt="{{ producthtml.PName }}" style="height:190px; width:190px">
+	      <h4 class="text-center">{{ producthtml.PName }}</h4>
+	      <p><a href="{{ url_for('main.details', item='products', item_id=producthtml.id ) }}" class="btn btn-sm btn-default center-block" role="button">详细介绍>></a></p>
+	      <hr>
+	    </div>
+	  {% endfor %}
+          
+          <div class="col-sm-12 pagination">
+              {%  if pagination.has_prev  %}
+                <li><a href="{{ url_for('main.products', page=pagination.prev_num) }}">&laquo;</a></li>
+              {% else %}
+                <li><a>&laquo;</a></li>
+              {% endif %}
+              
+              {% for page in pagination.iter_pages() %}
+                {% if page %}
+                    {% if page != pagination.page %}
+                        <li><a href="{{ url_for('main.products', page=page) }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a style="background-color: darkgray;opacity: 0.7;color: black" href="{{ url_for('main.products', page=page) }}">{{ page }}</a></li>
+                    {% endif %}
+                {% else %}
+                    <span class=ellipsis>…</span>
+                {% endif %}
+              {% endfor %}
+              
+              {%  if pagination.has_next  %}
+                <li><a href="{{ url_for('main.products', page=pagination.next_num) }}">&raquo;</a></li>
+              {% else %}
+                <li><a>&raquo;</a></li>
+              {% endif %}
+          </div>
+	</div>
+	
+	<div class="col-md-3 hidden-xs">
+	  <div class="page-header">
+	    <h3 class="page-header color-header">产品介绍</h3>
+	    <div class="panel-group" id="accordion">
+	      <div class="panel panel-default">
+	      <a class="list-group-item" data-target="#product1" data-toggle="collapse" data-parent="#accordion">
+	      套筒式多喷孔减压阀</a>
+	      	<ul id="product1" class="collapse">
+		  <!--
+		  {% for product1 in productsx %}
+		    {% if product1.item == 'A' %}
+		      <li><a href="{{url_for('products_detail', products_id = product1.id )}}">{{ product1.title }}</a></li>
+		    {% endif %}
+		  {% endfor %}
+		  -->
+		</ul>
+		</div>
+	      
+	      <div class="panel panel-default">
+	      <a class="list-group-item" data-target="#product2" data-toggle="collapse" data-parent="#accordion">
+	      固定锥形消能阀</a>
+		<ul id="product2" class="collapse">
+		  <!--
+		  {% for product2 in productsx %}
+		    {% if product2.item == 'B' %}
+		      <li><a href="{{url_for('products_detail', products_id = product2.id )}}">{{ product2.title }}</a></li>
+		    {% endif %}
+		  {% endfor %}
+		  -->
+		</ul>
+		</div>
+		
+	      <div class="panel pane-default">
+	      <a class="list-group-item" data-target="#product3" data-toggle="collapse" data-parent="#accordion">
+	      蝶阀系列</a>
+		<ul id="product3" class="collapse">
+		  <!--
+		  {% for product3 in productsx %}
+		    {% if product3.item == 'C' %}
+		      <li><a href="{{url_for('products_detail', products_id = product3.id )}}">{{ product3.title }}</a></li>
+		    {% endif %}
+		  {% endfor %}
+		  -->
+		</ul>
+		</div>
+	
+	      <div class="panel panel-group">
+	      <a class="list-group-item" data-target="#product4" data-toggle="collapse" data-parent="#accordion">
+	      闸阀/止回阀/水泵控制阀</a>
+		<ul id="product4" class="collapse">
+		  <!--
+		  {% for product4 in productsx %}
+		    {% if product4.item == 'D' %}
+		      <li><a href="{{url_for('products_detail', products_id = product4.id )}}">{{ product4.title }}</a></li>
+		    {% endif %}
+		  {% endfor %}
+		  -->
+		</ul>
+		</div>
+
+	      <div class="panel panel-group">
+	      <a class="list-group-item" data-target="#product5" data-toggle="collapse" data-parent="#accordion">
+	      阀门配件</a>
+		<ul id="product5" class="collapse">
+		  <!--
+		  {% for product5 in productsx %}
+		    {% if product5.item == 'E' %}
+		      <li><a href="{{url_for('products_detail', products_id = product5.id )}}">{{ product5.title }}</a></li>
+		    {% endif %}
+		  {% endfor %}
+		  -->
+		</ul>
+		</div>
+
+	    </div>
+	</div>
+	
+	<div class="alert alert-info" style="background-color: #CCFFFF">
+	    <h3 class="page-header">联系方式</h3>
+	    <address>
+	      <a href="/contact"><strong>福建瑞铼泊流体装备有限公司</strong></a></br>
+	      <abbr title="Address">地址:</abbr> 中国 | 南安</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 仑苍高新技术园</br>
+	      <abbr title="Zip">邮编:</abbr> 362304</br>
+	      <abbr title="Phone">电话:</abbr> 0595-26657666</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0595-86101888</br>
+	      <abbr title="Fax">传真:</abbr> 0595-26657666</br>
+	    </address>
+	  </div>
+	</div>
+      </div>
+    </div>
+    {% endblock %}
+{% endblock %}

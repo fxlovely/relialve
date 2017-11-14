@@ -1,0 +1,5 @@
+--留言信息--
+姓名：{{ messagedb.MName }}
+手机：{{ messagedb.MPhone }}
+邮箱：{{ messagedb.MEmail }}
+内容：{{ messagedb.MContent }}

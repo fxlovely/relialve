@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} 联系我们-福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+<div class="page" id="contact-page"></div>
+
+{% block page_content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info">
+            <ul class="flashes">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </ul>
+        </div>
+    {% endfor %}
+    <div class="container" style="padding-top: 20px">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="page-header color-header">福建瑞铼泊流体装备有限公司</h2>
+                <div class="col-sm-5">
+                    <h3 class="page-header">联系方式</h3>
+                    
+                        <a href="/"><strong>福建瑞铼泊流体装备有限公司</strong></a></br>
+                        <abbr title="Address">地址:</abbr>福建省泉州市南安市</br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仑苍高新技术园</br>
+                        <abbr title="Zip">邮编:</abbr>362304</br>
+                        <abbr title="Phone">电话:</abbr> 0595-26657666 </br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0595-86101888 </br>
+                        <abbr title="Fax">传真:</abbr> 0595-26657666 </br>
+                    
+                </div>
+                <div class="col-sm-7">
+                    <h3 class="page-header">我们的位置</h3>
+                    <a href="/static/img/map.png">
+                        <img src="/static/img/map.png" class="thumbnail img-responsive">
+                    </a>
+                </div>
+                
+                <div class="page-header">
+                    <h3 class="color-header">在线留言</h3>
+                    {{ wtf.quick_form(messageform) }}
+                </div>
+            </div>
+            
+            <div class="col-sm-3 col-sm-offset-1 hidden-xs">
+                <h3 class="page-header color-header">联系我们</h3>
+	   
+                <h4 class="page-header">销售部门</h4>
+                <dl class="dl-horizontal">
+                <dt>联系人：</dt>
+                <dd>陈先生</dd> 
+                <dt>手机：</dt>
+                <dd> 13909916687 </dd>
+                <dt>电话：</dt>
+                <dd> 0595-26657666 </dd>
+                <dt>传真：</dt>
+                <dd> 0595-86101888 </dd>
+                <dt>Email：</dt>
+                <dd> <a href="ccr@rlb-v.com">ccr@rlb-v.com</a> </dd>
+                </dl>
+	      
+                <h4 class="page-header">客服部门</h4>
+                <dl class="dl-horizontal">
+                <dt>联系人：</dt>
+                <dd>洪先生</dd> 
+                <dt>手机：</dt>
+                <dd> 13899937118 </dd>
+                <dt>电话：</dt>
+                <dd> 0595-26657666 </dd>
+                <dt>传真：</dt>
+                <dd> 0595-86101888 </dd>
+                <dt>Email：</dt>
+                <dd><a href="mailto:hzf@rlb-v.com"> hzf@rlb-v.com</a> </dd>
+                </dl>
+	      
+                <h4 class="page-header">人力资源</h4>
+                <dl class="dl-horizontal">
+                <dt>联系人：</dt>
+                <dd>刘女士</dd> 
+                <dt>手机：</dt>
+                <dd>13899899622</dd>
+                <dt>电话：</dt>
+                <dd> 0595-26657666 </dd>
+                <dt>传真：</dt>
+                <dd> 0595-86101888 </dd>
+                <dt>Email：</dt>
+                <dd><a href="mailto:lyj@rlb-v.com"> lyj@rlb-v.com</a> </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% endblock %}

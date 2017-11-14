@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %} 新闻资讯-福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+
+    <div class="page" id="news-page">
+
+    </div>
+    {% block page_content %}
+    <div class="container" style="padding-top: 20px">
+      <div class="row">
+	<div class="col-sm-8">
+	    <h2 class="page-header color-header">新闻资讯</h2>
+	      <ol>
+                {% for newshtml in newshtml %}
+                  <li>
+                    <a href="{{ url_for('main.details', item='news', item_id=newshtml.id) }}">{{ newshtml.NTitle }}(时间：{{ newshtml.NSubTime.strftime('%Y-%m-%d %H:%M') }})({{ newshtml.user.Username}})</a>
+                  </li>
+                {% endfor %}
+	      </ol>
+	</div>
+	<div class="col-sm-3 col-sm-offset-1 hidden-xs">
+	  <div class="page-header">
+	    <h3 class="page-header color-header">产品介绍</h3>
+	    <div class="list-group">
+	      <a class="list-group-item" data-target="#product1" data-toggle="collapse">
+	      套筒式多喷孔减压阀</a>
+	      	<ul id="product1" class="collapse">
+		  <li>305型套筒式多喷孔减压阀</li>
+		  <li>810型套筒式多喷孔减压阀</li>
+		  <li>811型套筒式多喷孔减压阀</li>
+		  <li>814型套筒式多喷孔减压阀</li>
+		</ul>
+	      
+	      <a class="list-group-item" data-target="#product2" data-toggle="collapse">
+	      固定锥形消能阀</a>
+		<ul id="product2" class="collapse">
+		  <li>末端放空消能阀</li>
+		  <li>管中消能锥形阀</li>
+		  <li>环喷式固定锥形阀</li>
+		</ul>
+	      <a class="list-group-item" data-target="#product3" data-toggle="collapse">
+	      蝶阀系列</a>
+		<ul id="product3" class="collapse">
+		  <li>软密封偏心法兰蝶阀</li>
+		  <li>金属密封法兰蝶阀</li>
+		  <li>高性能耐腐蚀蝶阀</li>
+		  <li>对夹式蝶阀</li>
+		  <li>法兰中心板式蝶阀</li>
+		  <li>SE蝶阀</li>
+		</ul>
+	      <a class="list-group-item btn btn-sm btn-primary " href="/products"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <strong>查看更多</strong></a>
+	    </div>
+	  </div>
+	  
+	  <div class="alert alert-info" style="background-color: #CCFFFF">
+	    <h3 class="page-header">联系方式</h3>
+	    <address>
+	      <a href="/contact"><strong>福建瑞铼泊流体装备有限公司</strong></a></br>
+	      <abbr title="Address">地址:</abbr> 中国 | 南安</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 仑苍高新技术园</br>
+	      <abbr title="Zip">邮编:</abbr> 362304</br>
+	      <abbr title="Phone">电话:</abbr> 0595-26657666</br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0595-86101888</br>
+	      <abbr title="Fax">传真:</abbr> 0595-26657666</br>
+	    </address>
+	  </div>
+	</div>
+      </div>
+    </div>
+    {% endblock %}
+{% endblock %}

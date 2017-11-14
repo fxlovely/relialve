@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} 福建瑞铼泊流体装备有限公司 {% endblock %}
+
+{% block content %}
+
+    <div class="page" id="home-page">
+
+    </div>
+    {% block page_content %}
+    
+    <div class="container">
+        <h1>在线留言</h1>
+        {{ wtf.quick_form(messageform) }}
+    </div>
+    
+    <div class="container">
+        数据：
+        <p>
+        {% if name %}
+            {{ name }}
+        {% endif %}
+        <br />
+        {% if phone %}
+            {{ phone }}
+        {% endif %}
+        <br />
+        {% if mail %}
+            {{ mail }}
+        {% endif %}
+        <br />
+        {% if content %}
+            {{ content }}
+        {% endif %}
+        </p>
+    </div>
+    
+    <div class="container">
+        {% for messagehtml in messagehtml %}
+            <li>
+                <a>{{ messagehtml.Name }}(时间：{{ messagehtml.SubTime.strftime('%Y-%m-%d %H:%M') }})</a>
+            </li>
+        {% endfor %}
+    </div>
+    
+    {% endblock %}
+{% endblock %}
