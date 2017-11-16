@@ -3,6 +3,7 @@
 # Copyright (c) 2017 - fxlovely <fxlovely@outlook.com>
 
 import os
+import sys
 virtenv = os.environ['APPDIR'] + '/virtenv/'
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.7/site-packages')
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
