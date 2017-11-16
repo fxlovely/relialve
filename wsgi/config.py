@@ -14,7 +14,7 @@ class Config:
     SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, '/migrations/db_repository')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     
-    UPLOADED_PHOTOS_DEST = os.environ['OPENSHIFT_DATA_DIR'] + 'uploads'
+    UPLOADED_PHOTOS_DEST = os.environ.get('OPENSHIFT_DATA_DIR') + 'uploads'
     UPLOADED_PHOTOS_ALLOW = tuple('jpg jpe jpeg png gif svg bmp IMG JPG PNG'.split())
     UPLOADED_VIDEOS_DEST = os.environ['OPENSHIFT_DATA_DIR'] + 'uploads'
     UPLOADED_VIDEOS_ALLOW = tuple('mp4 MP4 mov MOV'.split())
