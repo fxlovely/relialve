@@ -1,1 +1,1 @@
-APP_MODULE=wsgi/application
+APP_FILE=wsgi/application
