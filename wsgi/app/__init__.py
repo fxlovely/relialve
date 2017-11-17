@@ -20,7 +20,7 @@ login_manager.login_view = 'auth.login'
 photos = UploadSet('photos')
 videos = UploadSet('videos')
 
-from .models import *
+from models import *
     
 def create_app():
     app = Flask(__name__)
