@@ -1,1 +1,2 @@
 APP_FILE=wsgi/application
+OPENSHIFT_DATA_DIR=/opt/app-root/wsgi/

@@ -12,5 +12,4 @@ import sys
 #    execfile(virtualenv, dict(__file__=virtualenv))
 #except IOError:
 #    pass
-from relialve import relialve as application 
-from relialve import *
+from relialve import relialve as application
