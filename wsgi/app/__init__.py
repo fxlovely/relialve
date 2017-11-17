@@ -9,6 +9,7 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_mail import Mail
 from flask_login import LoginManager
 from config import Config
+from .models import *
 
 
 bootstrap = Bootstrap()
@@ -28,7 +29,7 @@ def create_app():
     bootstrap.init_app(app)
     db.app = app
     db.init_app(app)
-    from .models import *
+    #from .models import *
     db.create_all()
     
     mail.init_app(app)
