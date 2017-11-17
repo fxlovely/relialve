@@ -9,7 +9,6 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_mail import Mail
 from flask_login import LoginManager
 from config import Config
-from .models import *
 
 
 bootstrap = Bootstrap()
@@ -20,6 +19,8 @@ login_manager.session_protection = 'basic'
 login_manager.login_view = 'auth.login'
 photos = UploadSet('photos')
 videos = UploadSet('videos')
+
+from .models import *
     
 def create_app():
     app = Flask(__name__)
